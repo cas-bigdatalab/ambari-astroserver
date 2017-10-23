@@ -1,0 +1,39 @@
+{
+  "name": "default",
+  "description": "default quick links configuration",
+  "configuration": {
+
+    "links": [
+      {
+        "name": "jaguar_ui",
+        "label": "JAGUAR UI",
+        "requires_user_name": "false",
+        "component_name": "AJAGUAR_MASTER",
+        "url":"%@://%@:%@",
+        "port":{
+          "http_property": "8080",
+          "http_default_port": "8080",
+          "https_property": "8080",
+          "https_default_port": "8080",
+          "regex": "^(\\d+)$",
+          "site": "astroserver"
+        }
+      },
+	  {
+        "name": "jaguar_monitor",
+        "label": "JAGUAR MONITOR",
+        "requires_user_name": "false",
+        "component_name": "AJAGUAR_MASTER",
+        "url":"%@://%@:%@/monitor",
+        "port":{
+          "http_property": "8080",
+          "http_default_port": "8080",
+          "https_property": "8080",
+          "https_default_port": "8080",
+          "regex": "^(\\d+)$",
+          "site": "astroserver"
+        }
+      }
+    ]
+  }
+}
