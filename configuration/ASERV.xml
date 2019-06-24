@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration supports_adding_forbidden="true">
+  <property>
+    <name>download_url</name>
+    <value>http://repo/hdp/aserv/</value>
+    <description>the prefix of download url.</description>
+  </property>
+  <property>
+	<name>config</name>
+    <description>This is the jinja template for gwac/gwac_dbgen_cluster/config.sh</description>
+    <value>
+#!/bin/bash
+#the linux user name
+username="root"
+#the host name of master node
+mastername="emr17fb191d"
+
+templateTable="template_table" #gwac/ is root
+sourceFilePath="catalog.csv" #gwac/ is root
+abstarTemlatePath="abstar_template" #gwac/ is root
+
+redisIP="emr17fb191d:7000"
+redisPath="/usr/bin"
+
+detectorMaster="emr17fb191d:5555"
+detectorWorkDir=$HOME/gwac/detector
+
+jobServerHost="emr17fb191d:8090"
+jobServerPath="/opt/spark-job-server"
+jobServerRunUser="hdfs"
+
+queryEnginePath="../astroDB_cache/astro_engine-assembly-0.2.2.jar"
+
+hbaseInsertPath=/data/gwac/astroBase
+
+#sumpost is used for the communication between master and slaves
+sumpost=1984
+#we bulid a script stopGen.sh to stop the whole data generator.
+#stoppost is used for the communication between master and stopGen.sh.
+stoppost=1986
+#we bulid a script getSumData.sh to obtain the sum at the runtime,
+#including the total number of lines, the total data size of star tables, etc.
+#printpost is used for the communication between master and getSumData.sh
+printpost=1985
+#when each slave node start, we also start a daemon process to monitor and stop them.
+#stoppost is used for the communication between master and daemon processes of slaves.
+stoppostMC=1987
+    </value>
+ </property>
+ <property>
+ 	<name>nodehostname</name>
+    <description>This is the jinja template for gwac/gwac_dbgen_cluster/nodehostname</description>
+    <value>
+emre69bf7ed-208-10-0-0
+emrbf554c6f-208-26-0-4096
+    </value>
+ </property>
+</configuration>

@@ -1,0 +1,23 @@
+{
+  "GWAC_DBGEN_CLUSTER_MASTER": {
+    "Component": [
+      {
+        "type": "ganglia",
+        "metrics": {
+          "default": {
+            "metrics/aserv/line": {
+              "metric": "line",
+              "pointInTime": true,
+              "temporal": true
+            },
+            "metrics/aserv/size": {
+              "metric": "size",
+              "pointInTime": true,
+              "temporal": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

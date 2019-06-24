@@ -1,0 +1,57 @@
+{
+  "layouts": [
+    {
+      "layout_name": "default_aserv_dashboard",
+      "display_name": "Standard Aserv Dashboard",
+      "section_name": "ASERV_SUMMARY",
+      "widgetLayoutInfo": [
+        {
+          "widget_name": "Received Lines",
+          "description": "Received Lines",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "line",
+              "metric_path": "metrics/aserv/line",
+              "service_name": "ASERV",
+              "component_name": "GWAC_DBGEN_CLUSTER_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "Received Lines",
+              "value": "${line/1000000.0}"
+            }
+          ],
+          "properties": {
+             "display_unit": "M"
+          }
+        },
+        {
+          "widget_name": "Received Data Size",
+          "description": "Received Data Size",
+          "widget_type": "NUMBER",
+          "is_visible": true,
+          "metrics": [
+            {
+              "name": "size",
+              "metric_path": "metrics/aserv/size",
+              "service_name": "ASERV",
+              "component_name": "GWAC_DBGEN_CLUSTER_MASTER"
+            }
+          ],
+          "values": [
+            {
+              "name": "Received Data Size",
+              "value": "${size/1024}"
+            }
+          ],
+          "properties": {
+             "display_unit": "GB"
+          }
+        }
+      ]
+    }
+  ]
+}

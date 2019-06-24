@@ -3,91 +3,62 @@
   <schemaVersion>2.0</schemaVersion>
   <services>
     <service>
-      <name>ASTROSERVER</name>
-      <displayName>Astroserver</displayName>
-      <comment>Astroserver</comment>
-      <version>1.0</version>
+      <name>ASERV</name>
+      <displayName>Aserv</displayName>
+      <comment>a astro streaming data management system</comment>
+      <version>0.0.1</version>
       <components>
         <component>
-          <name>AJAGUAR_MASTER</name>
-          <displayName>jaguar_master</displayName>
+          <name>GWAC_DBGEN_CLUSTER_MASTER</name>
+          <displayName>Gwac_dbgen_cluster Master</displayName>
           <category>MASTER</category>
-		  <cardinality>1</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
+		      <cardinality>1</cardinality>
+          <timelineAppid>aserv</timelineAppid>
           <commandScript>
-            <script>scripts/jaguar.py</script>
+            <script>scripts/gwac_dbgen_master.py</script>
             <scriptType>PYTHON</scriptType>
             <timeout>600</timeout>
           </commandScript>
         </component>
-		<component>
-          <name>BSQUIRREL_MASTER</name>
-          <displayName>Squirrel_master</displayName>
-          <category>MASTER</category>
-		  <cardinality>1</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
+        <component>
+          <name>GWAC_DBGEN_CLUSTER_SLAVE</name>
+          <displayName>Gwac_dbgen_cluster Slave</displayName>
+          <category>CLIENT</category>
+          <cardinality>1+</cardinality>
           <commandScript>
-            <script>scripts/squirrel.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
-		<component>
-          <name>CGWAC_DBGEN_MASTER</name>
-          <displayName>gwac_dbgen_master</displayName>
-          <category>MASTER</category>
-		  <cardinality>1</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
-          <commandScript>
-            <script>scripts/gwac_dbgen.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
-		<component>
-          <name>AJAGUAR_SALVE</name>
-          <displayName>jaguar_slave</displayName>
-          <category>SLAVE</category>
-		  <cardinality>1+</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
-          <commandScript>
-            <script>scripts/jaguar.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
-		<component>
-          <name>BSQUIRREL_SLAVE</name>
-          <displayName>Squirrel_slave</displayName>
-          <category>SLAVE</category>
-		  <cardinality>1+</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
-          <commandScript>
-            <script>scripts/squirrel.py</script>
-            <scriptType>PYTHON</scriptType>
-            <timeout>600</timeout>
-          </commandScript>
-        </component>
-		<component>
-          <name>CGWAC_DBGEN_SALVE</name>
-          <displayName>gwac_dbgen_slave</displayName>
-          <category>SLAVE</category>
-		  <cardinality>1+</cardinality>
-		  <versionAdvertised>true</versionAdvertised>
-		  <timelineAppid>astroserver</timelineAppid>
-          <commandScript>
-            <script>scripts/gwac_dbgen.py</script>
+            <script>scripts/gwac_dbgen_slave.py</script>
             <scriptType>PYTHON</scriptType>
             <timeout>600</timeout>
           </commandScript>
         </component>
       </components>
 
+      <requiredServices>
+            <service>SPARK</service>
+            <service>SPARKJS</service>
+            <service>HBASE</service>
+            <service>REDIS</service>
+      </requiredServices>
+      
+      <osSpecifics>
+        <osSpecific>
+          <osFamily>redhat5,redhat6,redhat7</osFamily>
+          <packages>
+            <package>
+              <name>gcc-c++</name>
+            </package>
+            <package>
+              <name>libtool</name>
+            </package>
+            <package>
+              <name>epel-release</name>
+            </package>
+            <package>
+              <name>python2-pip</name>
+            </package>
+          </packages>
+        </osSpecific>
+      </osSpecifics>
 	  <quickLinksConfigurations>
         <quickLinksConfiguration>
           <fileName>quicklinks.json</fileName>

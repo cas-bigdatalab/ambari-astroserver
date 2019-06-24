@@ -5,33 +5,18 @@
 
     "links": [
       {
-        "name": "jaguar_ui",
-        "label": "JAGUAR UI",
+        "name": "GWAC_DBGEN_CLUSTER ui",
+        "label": "GWAC_DBGEN_CLUSTER UI",
         "requires_user_name": "false",
-        "component_name": "AJAGUAR_MASTER",
+        "component_name": "GWAC_DBGEN_CLUSTER_MASTER",
         "url":"%@://%@:%@",
         "port":{
-          "http_property": "8080",
-          "http_default_port": "8080",
-          "https_property": "8080",
-          "https_default_port": "8080",
+          "http_property": "10080",
+          "http_default_port": "10080",
+          "https_property": "10080",
+          "https_default_port": "10080",
           "regex": "^(\\d+)$",
-          "site": "astroserver"
-        }
-      },
-	  {
-        "name": "jaguar_monitor",
-        "label": "JAGUAR MONITOR",
-        "requires_user_name": "false",
-        "component_name": "AJAGUAR_MASTER",
-        "url":"%@://%@:%@/monitor",
-        "port":{
-          "http_property": "8080",
-          "http_default_port": "8080",
-          "https_property": "8080",
-          "https_default_port": "8080",
-          "regex": "^(\\d+)$",
-          "site": "astroserver"
+          "site": "ASERV"
         }
       }
     ]
